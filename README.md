@@ -20,5 +20,3 @@ Our research would wish to contribute to the study of autonomous driving by offe
 7. We have a report where the result analysis is discussed in details
 
 There are other files in the repository: the CNN_sample_model.ipynb file, which was a model CNN code used for comparision to our model, and a web_app.ipynb file which was an temporary webapp using just heuristics for analysis of roadsigns.
-
-Please let us know how well it works.
