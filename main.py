@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
+import time
 
 # We assign the image paths
 dataset_path = r"C:\Users\medha\Downloads\traffic_signs_dataset"  # Update with your dataset path
@@ -98,7 +99,8 @@ def ensemble_detection(image, templates):
 def evaluate_dataset():
     true_labels = []
     predicted_labels = []
-    misclassified_paths = []  
+    misclassified_paths = [] 
+    f = 0 
 
     for label in classes:
         folder_path = os.path.join(dataset_path, label)
@@ -110,6 +112,13 @@ def evaluate_dataset():
             image = cv2.imread(file_path)
             if image is None:
                 continue
+            if f == 0:
+                start_time = time.time()
+                predicted_label = ensemble_detection(image, templates)
+                end_time = time.time()
+                elapsed_time = end_time - start_time
+                print("Time taken: " ,elapsed_time)
+                f = 1
 
             predicted_label = ensemble_detection(image, templates)
             true_labels.append(label)
